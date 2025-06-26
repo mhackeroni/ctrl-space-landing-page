@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ctrl-Space CTF 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="Join the first European Capture-the-Flag competition played on real satellites orbiting Earth. Qualifiers September 20 - 21 2025. Finals November 4 - 6 2025" />
+  <link rel="preload" as="image" href="static/assets/hero-fallback.webp" fetchpriority="high">
+  <link rel="icon" href="static/assets/favicon.ico" type="image/x-icon" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap">
+  </noscript>
+
+  <!-- =========================   Critical CSS (inlined)   ========================= -->
+  <style>
+  :root{
+    /* Core palette */
+    --space-blue:#112437;--space-blue-dark:#081021;--neon-cyan:#29d4ff;
+    --light:#eaf6ff;--grey:#9db3c9;--accent:#9340ff;
+    --primary:var(--neon-cyan);
+    --bg-gradient:radial-gradient(circle at 50% 50%,var(--space-blue) 0%,var(--space-blue-dark) 100%);
+  }
+  html{scroll-behavior:smooth;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Roboto",sans-serif;background:var(--bg-gradient);color:var(--light);line-height:1.6;}
+
+  /* ---------- Hero ---------- */
+  header{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:0;}
+  header video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;z-index:-1;pointer-events:none;}
+  header .content{position:relative;z-index:1;max-width:800px;padding:0 1rem;}
+  h1{font-family:"Orbitron",sans-serif;font-size:2.75rem;text-transform:uppercase;letter-spacing:2px;background-image:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .tagline{margin-top:1rem;font-size:1.25rem;color:var(--grey);}
+  .btn{display:inline-block;margin-top:2rem;padding:.75rem 2rem;font-size:1rem;font-weight:500;border:2px solid var(--primary);border-radius:50px;color:var(--primary);transition:all .3s ease;}
+  .btn:hover{background:var(--primary);color:var(--space-blue);}
+
+  /* ---------- Countdown ---------- */
+  .countdown-container{display:flex;justify-content:center;align-items:center;margin:2rem 0;}
+  .countdown-timer{display:flex;gap:1.5rem;justify-content:center;align-items:center;}
+  .countdown-item{position:relative;text-align:center;font-variant-numeric:tabular-nums;}
+  .countdown-item span{font-family:"Orbitron",sans-serif;font-size:4rem;font-weight:700;color:rgba(255,255,255,.5);line-height:1;min-width:4ch;display:inline-block;}
+  .countdown-item .label{font-size:.875rem;color:var(--primary);position:absolute;bottom:-1.25rem;left:50%;transform:translateX(-50%);letter-spacing:2px;text-transform:uppercase;}
+
+  /* Reserve space for partner logos to avoid CLS */
+  .partner-logo{width:auto;height:12rem;object-fit:contain;aspect-ratio:3/2;filter:grayscale(100%);opacity:.75;transition:all .3s ease;}
+  .partner-logo:hover{filter:none;opacity:1;transform:scale(1.05);}
+  
+  </style>
+  <!-- Full stylesheet loaded *after* first paint → media trick prevents render‑blocking -->
+  <link rel="stylesheet" href="static/styles/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="static/styles/styles.css"></noscript>
+</head>
+<body>
+  <!-- ---------- Hero ---------- -->
+  <header>
+    <video id="heroVideo" preload="auto" poster="static/assets/hero-fallback.webp" playsinline autoplay muted>
+      <source src="static/assets/hero.webm" type="video/webm" />
+      <img src="static/assets/hero-fallback.webp" alt=""> <!-- fallback for very old browsers -->
+    </video>
+    <div class="content">
+      <h1 class="main-header">
+        <span class="hdr-line">Ctrl-Space</span>
+        <span class="hdr-line">CTF&nbsp;2025</span>
+      </h1>
+      <div class="countdown-container">
+        <div class="countdown-timer" id="countdown">
+          <div class="countdown-item"><span id="days">00</span><span class="label">Days</span></div>
+          <div class="countdown-item"><span id="hours">00</span><span class="label">Hrs</span></div>
+          <div class="countdown-item"><span id="minutes">00</span><span class="label">Mins</span></div>
+          <div class="countdown-item"><span id="seconds">00</span><span class="label">Secs</span></div>
+        </div>
+      </div>
+      <p class="tagline">Hack the final frontier in Europe’s first CTF played on live satellites.</p>
+      <a href="#about" class="btn">Registration TBA</a>
+    </div>
+  </header>
+
+  <!-- ---------- Main ---------- -->
+  <main>
+    <section id="partners">
+      <h2>Powered by</h2>
+      <p style="text-align:center;max-width:800px;margin:0 auto 2rem;">
+        Ctrl-Space is a joint mission by the European Space Agency (ESA), D-Orbit and mhackeroni, bringing together leaders in space operations and cybersecurity.
+      </p>
+
+      <div class="partner-logos">
+        <!-- Joint organisers (ESA + D-Orbit) -->
+        <div class="partner-group organisers">
+          <div class="group-logos">
+            <a href="https://www.esa.int/">
+              <img src="static/assets/esa-light.webp" class="partner-logo esa-logo" alt="European Space Agency" />
+            </a>
+            <a href="https://www.dorbit.space/">
+              <img src="static/assets/frozen-dorbit.webp" class="partner-logo dorbit-logo" alt="D-Orbit" />
+            </a>
+          </div>
+          <p class="partner-label">Event Organisers</p>
+        </div>
+
+        <!-- Challenge authors (mhackeroni) -->
+        <div class="partner-group authors">
+          <a href="https://mhackeroni.it">
+            <img src="static/assets/mhack-frozen-final.webp" class="partner-logo mhackeroni-logo" alt="mhackeroni" />
+          </a>
+          <p class="partner-label">Challenge Authors</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mission">
+      <div class="container">
+        <h2 class="headline">
+          Mission&nbsp;Brief&nbsp;· <span class="hl">Ctrl-Space</span>
+        </h2>
+
+        <p class="tagline">
+            Ctrl-Space challenges security enthusiasts on real-world satellite systems. Born from the joint efforts of ESA, D-Orbit, and mhackeroni, Ctrl-Space will offer a high-stakes challenge to CTFs teams around the world. 
+        </p>
+
+        <div class="grid">
+          <!-- Qualifiers card -->
+          <article class="event-card">
+            <h3>Online Qualifiers</h3>
+            <time datetime="2025-09-20T09:00:00Z">
+              20 – 21 Sep 2025 &nbsp;&nbsp;<span class="sep">|</span>&nbsp;&nbsp; 09:00 UTC
+            </time>
+            <p>24-hour online, jeopardy-style competition.</p>
+          </article>
+
+          <!-- Finals card -->
+          <article class="tba-event-card">
+            <h3>In-Orbit Finals</h3>
+            <time datetime="2025-11-04">
+              4 – 6 Nov 2025
+            </time>
+            <p>
+              On-site at
+              <a href="https://security4space.esa.int/" target="_blank" rel="noopener">
+                Security for Space Systems (3S)
+              </a><br>
+              🇳🇱 ESTEC, Netherlands.
+            </p>
+          </article>
+        </div>
+
+        <p class="cta">
+          The finals are where the real fun begins - solve tasks on real satellites orbiting Earth.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section id="sponsors">
+      <h2>Mission Control</h2>
+      <p style="text-align:center;max-width:800px;margin:0 auto 2rem;">
+        Made possible by our partners in the industry.
+      </p>
+      <div class="sponsor-logos">
+        <div class="sponsor-column">
+          <a href="https://leaf.space/">
+            <img src="static/assets/leaf-space-alt.webp" alt="Leaf Space" />
+          </a>
+          <p class="sponsor-label">Groundstation Infrastructure</p>
+        </div>
+        <div class="sponsor-column">
+          <a href="https://aws.amazon.com/what-is-cloud-computing">
+            <img src="https://d0.awsstatic.com/logos/powered-by-aws-white.png" alt="Powered by AWS Cloud Computing" style="padding-top: 1.5rem; padding-bottom: 1.5rem;" />
+          </a>
+          <p class="sponsor-label">Cloud Infrastructure</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+      <div style="text-align:center;">
+        <h2>Ready to Launch?</h2>
+        <p>Form your crew and join the mission to secure space!</p>
+        <a href="" class="btn">Registration TBA</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ---------- Footer ---------- -->
+  <footer style="background:#151f32;padding:2rem 1rem;font-size:.875rem;color:var(--grey);text-align:center;">
+    <p>Stay tuned for more information coming soon! 🛰️</p>
+  </footer>
+  <script src="static/js/countdown.js"></script>
+</body>
+</html>
