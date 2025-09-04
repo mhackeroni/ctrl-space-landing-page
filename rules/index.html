@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ctrl+Space CTF 2025 - Rules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="Join the first European Capture-the-Flag competition played on real satellites orbiting Earth. Qualifiers September 20 - 21 2025. Finals November 4 - 6 2025" />
+
+  <!-- ———— OPEN GRAPH  (Facebook, WhatsApp, LinkedIn, etc.) ———— -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://ctrl-space.gg/rules">
+  <meta property="og:title"       content="Ctrl+Space CTF 2025 - Hack satellites in orbit">
+  <meta property="og:description" content="Join the first European Capture-the-Flag competition played on real satellites orbiting Earth. Qualifiers September 20 - 21 2025. Finals November 4 - 6 2025">
+  <meta property="og:image"       content="https://ctrl-space.gg/static/assets/preview.webp">
+  <meta property="og:image:alt"   content="Shining Earth">
+  <meta property="og:locale"      content="en_GB">
+  <meta property="og:site_name"   content="Ctrl+Space CTF 2025">
+
+  <!-- ———— TWITTER / X ———— -->
+  <meta name="twitter:card"        content="summary_large_image">  <!-- 2:1 aspect; uses same 1200×630 image -->
+  <!-- <meta name="twitter:site"        content="@CtrlSpaceCTF">        optional but nice -->
+  <meta name="twitter:url"         content="https://ctrl-space.gg/rules">
+  <meta name="twitter:title"       content="Ctrl+Space CTF 2025 - Hack satellites in orbit">
+  <meta name="twitter:description" content="Join the first European Capture-the-Flag competition played on real satellites orbiting Earth. Qualifiers September 20 - 21 2025. Finals November 4 - 6 2025">
+  <meta name="twitter:image"       content="https://ctrl-space.gg/static/assets/preview.webp">
+  <meta name="twitter:image:alt"   content="Shining Earth">
+
+  <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap"
+      as="style"
+      onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap">
+  </noscript>
+
+  <!-- =========================   Critical CSS (inlined)   ========================= -->
+  <style>
+  :root{
+    /* Core palette */
+    --space-blue:#112437;--space-blue-dark:#081021;--neon-cyan:#29d4ff;
+    --light:#eaf6ff;--grey:#9db3c9;--accent:#9340ff;
+    --primary:var(--neon-cyan);
+    --bg-gradient:radial-gradient(circle at 50% 50%,var(--space-blue) 0%,var(--space-blue-dark) 100%);
+  }
+  html{scroll-behavior:smooth;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Roboto",sans-serif;background:var(--bg-gradient);color:var(--light);line-height:1.6;}
+
+  /* ---------- Hero ---------- */
+  header{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:0;}
+  header video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;z-index:-1;pointer-events:none;}
+  header .content{position:relative;z-index:1;max-width:800px;padding:0 1rem;}
+  h1{font-family:"Orbitron",sans-serif;font-size:2.75rem;text-transform:uppercase;letter-spacing:2px;background-image:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  h2{margin-top:3rem;}
+  h3{font-size:1.5rem;margin-top:2.25rem;font-family:"Orbitron",sans-serif;letter-spacing:1px;}
+  p{margin-top: 0.75rem;}
+  li{margin-left: 1rem;}
+  .ctf-title{font-family:"Orbitron",sans-serif;font-size:1.75rem;text-transform:uppercase;letter-spacing:2px;background-image:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent; font-weight: bold;}
+  .tagline{margin-top:1rem;font-size:1.25rem;color:var(--grey);}
+  .btn{display:inline-block;margin-top:2rem;padding:.75rem 2rem;font-size:1rem;font-weight:500;border:2px solid var(--primary);border-radius:50px;color:var(--primary);transition:all .3s ease;}
+  .btn:hover{background:var(--primary);color:var(--space-blue);}
+  .equipment-element{display:block;font-weight:bold;margin-top:1.5rem;}
+
+  /* Reserve space for partner logos to avoid CLS */
+  .partner-logo{width:auto;height:12rem;object-fit:contain;aspect-ratio:3/2;filter:grayscale(100%);opacity:.75;transition:all .3s ease;}
+  .partner-logo:hover{filter:none;opacity:1;transform:scale(1.05);}
+  .rules-icon {width: 1em;height: 1em;margin-right: 0.5rem;flex-shrink: 0;fill:currentColor;vertical-align: middle;}
+  .break-url {overflow-wrap: anywhere;word-break: break-word;line-break: anywhere;hyphens: auto;}
+  </style>
+  <!-- Full stylesheet loaded *after* first paint → media trick prevents render‑blocking -->
+  <link rel="stylesheet" href="/static/styles/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/static/styles/styles.css"></noscript>
+</head>
+<body>
+  <!-- ---------- Navbar ---------- -->
+    <nav style="background:rgba(17,36,55,.85);backdrop-filter:blur(10px);position:sticky;top:0;z-index:1000;">
+        <div style="max-width:1200px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between;">
+            <a href="/index.html" class="ctf-title">Ctrl+Space CTF 2025</a>
+            <div>
+                <a href="/index.html" style="color:var(--light);text-decoration:none;margin-right:1.5rem;">Home</a>
+                <a href="/rules/index.html" style="color:var(--light);text-decoration:none;margin-right:1.5rem;font-weight:bold;border-bottom:2px solid var(--primary);padding-bottom:.25rem;">Rules</a>
+            </div>
+        </div>
+    </nav>
+  <!-- ---------- Main ---------- -->
+  <main>
+        <section id="rules">
+            <h1 style="text-align:center;">Mission Briefing</h1>
+            <p>Ctrl+Space CTF consists of an online qualification event and a final event, which will take place in-person during the <a href="https://security4space.esa.int/">3S conference</a> at ESTEC.</p>
+            <h2>Event Structure, Qualification and Calendar of Events</h2>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-globe rules-icon" viewBox="0 0 16 16">
+                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                </svg>
+                Qualification Event</h3>
+            <p>
+                The qualification is an online, open competition (Jeopardy-style) where teams solve cybersecurity challenges of varying categories and difficulties on a dedicated platform. At the start of the qualifier, multiple challenges will be available on the board. Teams earn points by solving challenges and submitting the correct “flags” through the contest website. 
+            </p>
+            <p>
+                Challenges may involve topics such as cryptography, reverse engineering, radio, web security, space systems, pwn, etc. The event lasts 24 hours with no interruptions, from <strong>September 20, 09:00 UTC to September 21, 09:00 UTC</strong>. The qualifier event challenges will be freely available to all registered teams; teams can solve challenges in any order until the contest ends. 
+            </p>
+            <p>
+                The scoreboard ranking at the end of the Qualification round will determine the top teams. The five highest-scoring teams will receive invitations to the Final Event. In case of a tie, it will be broken by the team who achieved the score first, or by additional criteria at the organizers’ discretion.
+            </p>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trophy-fill rules-icon" viewBox="0 0 16 16">
+                    <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935"/>
+                </svg>
+                Final Event</h3>
+            <p>
+                The finals of the 2025 Ctrl+Space CTF will be held in-person at <strong>ESTEC (European Space Research and Technology Centre)</strong> in the Netherlands, alongside the <strong>2025 <a href="https://security4space.esa.int/">Security for Space Systems (3S) Conference</a></strong> on <strong>November 4–6, 2025</strong>.
+            </p>
+            <p>
+                Finalist teams will compete in a series of live challenges involving a target space system. This may include a mix of Jeopardy-style tasks and interactive scenarios with real or simulated satellite systems. For example, finalists will have scheduled contact windows to interface with an in-orbit satellite provided for the competition, as well as ground-based challenges in between live contacts.
+            </p>
+            <p>
+                If live satellite interaction is not possible, the competition will pivot to a simulated space system environment. The team with the highest score at the end of the finals will be the winner. The final event also serves as an educational opportunity with exposure to real-world space cybersecurity scenarios.
+            </p>
+
+            <h2>Eligibility and Team Composition</h2>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-passport rules-icon" viewBox="0 0 16 16">
+                    <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+                    <path d="M2 3.252a1.5 1.5 0 0 1 1.232-1.476l8-1.454A1.5 1.5 0 0 1 13 1.797v.47A2 2 0 0 1 14 4v10a2 2 0 0 1-2 2H4a2 2 0 0 1-1.51-.688 1.5 1.5 0 0 1-.49-1.11V3.253ZM5 8a3 3 0 1 0 6 0 3 3 0 0 0-6 0m0 4.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5"/>
+                </svg>
+                Eligible Participants</h3>
+            <ul>
+                <p>The Ctrl+Space CTF final event is only open to <strong>students</strong>, reflecting the educational aim of the competition. Team members must be enrolled in an academic program (undergraduate, graduate, or PhD). Participants should be from an ESA Member State or an Associated/Cooperating country in an ESA education program.</p>
+                <p>A list of eligible countries is provided by ESA. For a list of the relevant countries, please check: <a class="break-url" href="https://www.esa.int/Education/Current_ESA_Member_States">https://www.esa.int/Education/Current_ESA_Member_States</a>. Each participant may need to show proof of student status and nationality during registration or event check-in for the finals.</p>
+            </ul>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-people-fill rules-icon" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                </svg>      
+                Team Size</h3>
+            <ul>
+                <p>Teams may consist of 2 to 6 students including the team leader. A minimum of two team members from each finalist team must attend in-person the on-site final. It is up to each finalist team whether to bring additional members (up to the 6 member limit) to the finals. </p>
+            </ul>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pen-fill rules-icon" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                </svg>
+                Registration</h3>
+            <p>
+                Teams will register for the qualification round via the designated <a href="https://scoreboard.ctrl-space.gg">CTF platform</a>.
+                <div style="margin-top: 0.5rem;"></div>
+                <li>No participant may compete on more than one team</li>
+                <li>Account sharing is prohibited.</li>
+                <li>For the final event, teams will be contacted by the organizers to arrange their members participation. After confirmation of participation to the final event, teams cannot add new members or change team composition without organizer approval.</li>
+                <li>The organizers reserve the right to verify participants' eligibility (such as student status or organizational affiliation) and may reject registrations that do not meet the criteria.</li>
+            </p>
+
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-airplane-fill rules-icon" viewBox="0 0 16 16">
+                    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849"/>
+                </svg>
+                Travel to Finals</h3>
+            <p>
+                Finalist teams will receive instructions from ESA regarding the final event logistics.
+                <li>At least two members must attend in person; teams may bring up to five members to the finals (within the team size limit).</li>
+                <li>All on-site participants must comply with ESTEC visitor procedures (e.g. providing ID for entry, following facility rules).</li>
+                <li>If a team cannot field the minimum required members on-site, they may be disqualified and the next-ranked team from qualifiers could be invited as a replacement.</li>
+                <li>Keep in mind that any travel support (sponsorship by ESA Academy) may have a budget cap per team. All members of a team must meet the eligibility requirements.</li>
+                
+                <p>See the ESA Academy Sponsorship section for details.</p>
+            </p>
+
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-mortarboard-fill rules-icon" viewBox="0 0 16 16">
+                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+                    <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+                </svg>
+                ESA Academy Sponsorship</h2>
+            <ul>
+                <li style="list-style:none; margin:0; padding:0;">
+                    <p>The sponsorship for the 5 finalist teams will cover traveling and accommodation expenses. The following restrictions apply:</p>
+                    <ul>
+                        <li>All participant must me students (bachelor, master, PhD students)</li>
+                        <li>Eligibility requirements apply:
+                            <ul>
+                                <li>To participate to the event, teams and all members of the teams shall have to be from an ESA member state or from a state has signed an agreement with ESA on educational programs. For a list of the relevant countries, please check: <a class="break-url" href="https://www.esa.int/Education/Current_ESA_Member_States">https://www.esa.int/Education/Current_ESA_Member_States</a>.</li>
+                                <li>Specifically, The sponsorship will cover travel and accommodation expenses of min 2 students of each team, up to a ceiling amount of EUR 1000 per team, which will be reimbursed via a single bank transfer after the event and will only be paid upon submission of receipts.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3>Eligibility Criteria</h3>
+                    <p>To be eligible for an ESA Academy Student Sponsorship, students must fulfil the following criteria at the time of application:</p>
+                    <ul>
+                        <li>be part of one of the teams selected via the qualifier event.</li>
+                        <li>be minimum 18 years old at the time of the conference;</li>
+                        <li>be a citizen of an ESA Member State, Canada, Latvia, Lithuania, Slovakia or Slovenia;</li>
+                        <li>be enrolled as a student (Bsc, Msc, or Ph.D.) in a tertiary education academic programme (not graduating before the conference);</li>
+                        <li>not benefiting from an overlapping financial support to attend this conference, unless duly justified;</li>
+                        <li>agree with the conditions of the ESA Academy’s Privacy Policy</li>
+                    </ul>
+                    <p>NOTE: Registration fees for students who will participate at the finals of the Space Systems Security Challenge are waived (there will be no cost).</p>
+                </li>
+            </ul>
+
+            <h2>Rules of Engagement – Terms and Conditions</h2>
+            <p>By participating and registering for the event, participants agree to the terms and conditions of the event.</p>
+            <p>While the organizing team will take all necessary steps to minimize any unexpected or unpleasant technical problems, malfunctions or damages, participants agree to participate at their own risk. No claims for damages of any kind can be made as a result of participating in the CTF event, nor during travel to or from the venue.</p>
+            <h3>In-Scope Systems</h3>
+            <p>Participants are only allowed to target and interact with the systems explicitly provided for the CTF challenges purposes. This includes the official CTF infrastructure (challenge servers, the dedicated competition network, provided network interfaces, and the designated in-orbit satellite CTF environment or its simulation during the event). Each challenge will clearly specify the scope of what can be accessed or attacked for that challenge. For instance, if a challenge provides an IP address or URL and port, or a specific satellite command interface, those are the only authorized targets for that challenge. The organizers will provision all necessary access to these systems. All attackable services and endpoints will be clearly defined as part of the challenges, and no part of the overall CTF platform or external infrastructure is ever considered “in play” unless explicitly stated.</p>
+            <h3>Out-of-Scope Targets (Strictly Prohibited)</h3>
+            <p>Any attempt to tamper with or attack systems outside the CTF environment is expressly forbidden. Participants must not target any infrastructures that are not part of the competition, including but not limited to: the scoreboard system, other teams’ personal devices or networks, the conference venue’s general IT systems (such as ESTEC’s Wi-Fi or networks), or any external websites and satellites not provided as part of the CTF. Even the satellites involved in the CTF must only be interacted with through the approved channels and time windows defined by the contest – any other interference is out-of-scope. Under no circumstances should teams attempt to penetrate or disturb non-CTF systems. Violations of scope will result in immediate disqualification and removal from the event. Specifically, no activities shall take place against any systems or assets outside the challenges environment, including the satellites or ground assets not explicitly part of the CTF scenario. If such a deviation from the rules is detected, the offending team will be expelled from the competition, removed from the conference venue, and denied further access to ESTEC premises. The organizers may also report any malicious attempts to the appropriate authorities if laws are violated.</p>
+            <h3>Finding Vulnerabilities in the Platform</h3>
+            <p>If a team discovers a vulnerability or flaw in the CTF platform or infrastructure (for example, a bug in the scoring system, or an unintended access to a server), they must report it to the organizers immediately and must not exploit it to gain advantage. Exploiting platform bugs or misconfigurations (even if found accidentally) is considered out-of-bounds behavior. The competition officials may, at their discretion, provide clarifications or fix any such issues once reported. Using an unintended exploit against the contest infrastructure itself (as opposed to solving the intended challenges) is strictly prohibited and falls under out-of-scope attacks.</p>
+            <h3>Denial of Service and Sabotage</h3>
+            <p>Teams should refrain from any non-specific Denial-of-Service (DoS) attacks or other actions that degrade the performance of challenge services beyond normal use. Generating excessive traffic to overwhelm a service, “flooding” networks, or any similar tactic with the sole purpose of disruption is not allowed. For example, if a challenge involves solving a service, it is expected that teams interact normally with that service; deliberately overloading it to prevent others from access is forbidden. Likewise, any form of sabotage, such as modifying or deleting flags, altering challenge resources, or any activity intended to make challenges unsolvable or easier for certain teams, is prohibited. 
+            The organizers recognize that unexpected situations can occur due to the complex environment. Any edge cases or uncertainties about what is allowed will be judged by the organizers on a case-by-case basis, emphasizing the spirit of the competition. If you are unsure whether an action is within the rules, err on the side of caution and ask an official. The organizing team reserves the right to issue warnings or disqualify teams for activities that, while not explicitly covered above, violate the spirit of fair competition or the safety and security of the event.
+            The final event will include live interactions with in-orbit satellites during defined time windows provided by the organiser team. In case of any unforeseen unavailability of the CTF spacecrafts, the competition will pivot to ground-based simulated environments representative of the spacecraft platform.</p>
+            <p>ESA, D-Orbit and mhackeroni retain the right to reject or disqualify any team not abiding by the rules without further explanation. ESA, D-Orbit and mhackeroni also retain the right to update the terms and conditions of the challenge until the beginning of the finals.</p>
+
+            <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-wrench rules-icon" viewBox="0 0 16 16">
+                    <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11z"/>
+                </svg>  
+                Equipment and Technical Requirements</h2>
+
+            <span class="equipment-element">Personal Equipment</span>
+            <p>
+                Finalist teams must bring their own computing equipment (typically laptops) to the finals. Each team is responsible for having the tools and software they need pre-installed on their machines before the competition. Internet access and networking for the competition will be provided by the organizers at the venue. While, the qualification round, being online, requires teams to have their own internet access and computers to compete.
+            </p>
+            <span class="equipment-element">Prohibited Devices</span>
+            <p>
+                A detailed list of allowed devices to the final event will be released to the finalist teams. The competition setup will include all necessary communications interfaces to interact with the satellite and ground systems; the need for SDR or other radio equipment will be clarified to the finalist teams. Similarly, specialized offensive hardware gadgets (for example, USB Rubber Ducky, Wi-Fi Pineapple, rogue access points, hardware keyloggers, etc.) are not permitted in the competition area. The intent is to prevent any device that could interfere with networks or equipment outside the intended scope.
+            </p> 
+            <span class="equipment-element">Provided Interfaces</span>
+            <p>
+                The organizers will provide all required interfaces to the competition systems. This may include network access to challenge servers, VPN credentials, or a dedicated local network at the venue that connects to the satellite ground station system. Teams will be briefed on how to interact with the in-orbit satellite during the allocated contact windows. 
+            </p>
+            <span class="equipment-element">Software and Tools</span>
+            <p>
+                Teams can use any software tools of their choice on their machines. It is recommended to have a wide range of cybersecurity tools (network analyzers, debuggers, reverse engineering tools, etc.) ready before the event. There is no on-site software installation support, so ensure everything is installed and functioning beforehand.
+            </p>
+            <span class="equipment-element">Environment Constraints</span>
+            <p>
+                Participants must not attempt to alter the competition environment. For example, do not try to install persistent services on provided networks or scan beyond the scope. No port-scanning or broad vulnerability scanning of competition hosts outside of what a challenge specifically entails (especially if multiple challenges share infrastructure). Many challenges might run on shared virtual machines or containers; teams should respect any scope limitations given. Following these instructions helps avoid unintentionally crashing services or disrupting other challenges.
+            </p>
+            <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-question-circle-fill rules-icon" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.255 
+                    5.786a.237.237 0 0 0 .241.247h.825c.138 0 
+                    .248-.113.266-.25.09-.656.54-1.134 
+                    1.342-1.134.686 0 1.314.343 
+                    1.314 1.168 0 .635-.374.927-.965 
+                    1.371-.673.489-1.206 1.06-1.168 
+                    1.987l.003.217a.25.25 0 0 0 
+                    .25.246h.811a.25.25 0 0 0 
+                    .25-.25v-.105c0-.718.273-.927 
+                    1.01-1.486.609-.463 
+                    1.244-.977 1.244-2.056 
+                    0-1.511-1.276-2.241-2.673-2.241-1.267 
+                    0-2.655.59-2.75 2.286Zm1.557 
+                    5.763c0 .533.425.927 1.01.927.609 
+                    0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 
+                    0-1.009.388-1.009.94"/>
+            </svg>
+            Frequently Asked Questions
+            </h2>
+
+            <h3>- Do I need any equipment for the qualification round?</h3>
+            <p>No, everything is online and remote.</p>
+
+            <h3>- What equipment is necessary and what is allowed to bring on-site for the finals?</h3>
+            <p>
+                <p>For the finals, participants will need to bring their own laptops with their preferred tools and software pre-installed, to be able to prepare and launch their attacks against the target space system. Participants to the finals are forbidden to bring any antennas of any kind.</p>
+                <p>Bringing specialised hacking hardware on-site (e.g., Rubber Ducky, Pineapple) is not allowed.</p>
+                <p>A detailed list of allowed and prohibited items will be provided to the finalist teams.</p>
+            </p>
+
+            <h3>- What is the process of participating?</h3>
+            <p>Teams will have to enroll in the qualification event via the <a href="https://scoreboard.ctrl-space.gg">CTF platform</a>.</p>
+
+            <h3>- Will all the team come to the finals?</h3>
+            <p>
+                Each teams should consist of 2 up to 6 participants (including the team leaders). At the finals, minimum 2 team members have to participate in-person to the event on-site. It is up to the team if more than 2 (and up to 6, including team leaders) will come. You should be aware though that travelling reimbursement, sponsored by ESA Academy, has a ceiling of 1000 EUR. See the ESA Academy sponsorship section for more details. 
+            </p>
+
+            <h3>- How many people will be selected to the final event and how?</h3>
+            <p>The top 5 teams of the qualification event will be invited to the finals event, based on their overall score.</p>
+        </section>
+  </main>
+  <!-- ---------- Footer ---------- -->
+  <footer style="background:#151f32;padding:1rem 0rem 2rem 0rem;font-size:.875rem;color:var(--grey);text-align:center;">
+    <p>Last updated: September 3rd 2025 - Stay tuned 🛰</p>
+  </footer>
+</body>
+</html>
