@@ -63,12 +63,13 @@
   .btn{display:inline-block;margin-top:2rem;padding:.75rem 2rem;font-size:1rem;font-weight:500;border:2px solid var(--primary);border-radius:50px;color:var(--primary);transition:all .3s ease;}
   .btn:hover{background:var(--primary);color:var(--space-blue);}
 
-  /* ---------- Countdown ---------- */
-  .countdown-container{display:flex;justify-content:center;align-items:center;margin:2rem 0;}
-  .countdown-timer{display:flex;gap:1.5rem;justify-content:center;align-items:center;}
-  .countdown-item{position:relative;text-align:center;font-variant-numeric:tabular-nums;}
-  .countdown-item span{font-family:"Orbitron",sans-serif;font-size:4rem;font-weight:700;color:rgba(255,255,255,.5);line-height:1;min-width:4ch;display:inline-block;}
-  .countdown-item .label{font-size:.875rem;color:var(--primary);position:absolute;bottom:-1.25rem;left:50%;transform:translateX(-50%);letter-spacing:2px;text-transform:uppercase;}
+  /* ---------- Scoreboard ---------- */
+  .scoreboard-container{width:100%;margin:2rem 0;display:flex;justify-content:center;}
+  .scoreboard{width:auto;max-width:95%;border-collapse:collapse;background:rgba(0,0,0,.3);backdrop-filter:blur(10px);border-radius:12px;}
+  .scoreboard th{padding:.75rem 1rem;text-align:left;font-size:.7rem;font-weight:600;color:var(--grey);text-transform:uppercase;letter-spacing:1px;}
+  .scoreboard td{padding:1rem;vertical-align:middle;}
+  .team-cell{display:flex;align-items:center;gap:.75rem;min-height:3rem;}
+  .team-logo{width:2rem;height:2rem;object-fit:contain;flex-shrink:0;display:block;}
 
   /* Reserve space for partner logos to avoid CLS */
   .partner-logo{width:auto;height:12rem;object-fit:contain;aspect-ratio:3/2;filter:grayscale(100%);opacity:.75;transition:all .3s ease;}
@@ -91,15 +92,72 @@
         <span class="hdr-line">Ctrl+Space</span>
         <span class="hdr-line">CTF&nbsp;2025</span>
       </h1>
-      <div class="countdown-container">
-        <div class="countdown-timer" id="countdown">
-          <div class="countdown-item"><span id="days">00</span><span class="label">Days</span></div>
-          <div class="countdown-item"><span id="hours">00</span><span class="label">Hrs</span></div>
-          <div class="countdown-item"><span id="minutes">00</span><span class="label">Mins</span></div>
-          <div class="countdown-item"><span id="seconds">00</span><span class="label">Secs</span></div>
-        </div>
+      <p class="tagline" style="margin-top: 1rem;">The event has concluded. Thank you to all participants!</p>
+      <div class="scoreboard-container">
+        <table class="scoreboard">
+          <thead>
+            <tr>
+              <th class="rank-col">RANK</th>
+              <th class="team-col">TEAM</th>
+              <th class="score-col">JEOPARDY SCORE</th>
+              <th class="score-col">KOTH SCORE</th>
+              <th class="score-col">FINAL SCORE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank-cell"><span class="rank-badge rank-1">1</span></td>
+              <td class="team-cell">
+                <img src="static/team-logos/superflat.png" alt="Superflat" class="team-logo">
+                <span class="team-name"> Superflat</span>
+              </td>
+              <td class="score-cell"><span class="score jeopardy">3370.0</span></td>
+              <td class="score-cell"><span class="score koth">75521.67</span></td>
+              <td class="score-cell"><span class="score combined">3370.0</span></td>
+            </tr>
+            <tr>
+              <td class="rank-cell"><span class="rank-badge rank-2">2</span></td>
+              <td class="team-cell">
+                <img src="static/team-logos/enoflag.png" alt="ENOFLAG" class="team-logo">
+                <span class="team-name">ENOFLAG</span>
+              </td>
+              <td class="score-cell"><span class="score jeopardy">3310.0</span></td>
+              <td class="score-cell"><span class="score koth">59201.67</span></td>
+              <td class="score-cell"><span class="score combined">3176.35</span></td>
+            </tr>
+            <tr>
+              <td class="rank-cell"><span class="rank-badge rank-3">3</span></td>
+              <td class="team-cell">
+                <img src="static/team-logos/redrocket.png" alt="RedRocket" class="team-logo">
+                <span class="team-name">RedRocket</span>
+              </td>
+              <td class="score-cell"><span class="score jeopardy">3130.0</span></td>
+              <td class="score-cell"><span class="score koth">53518.33</span></td>
+              <td class="score-cell"><span class="score combined">2981.63</span></td>
+            </tr>
+            <tr>
+              <td class="rank-cell"><span class="rank-badge rank-4">4</span></td>
+              <td class="team-cell">
+                <img src="static/team-logos/czech-cyber-team.png" alt="Czech Cyber Team" class="team-logo">
+                <span class="team-name">Czech Cyber Team</span>
+              </td>
+              <td class="score-cell"><span class="score jeopardy">2140.0</span></td>
+              <td class="score-cell"><span class="score koth">53695.0</span></td>
+              <td class="score-cell"><span class="score combined">2191.21</span></td>
+            </tr>
+            <tr>
+              <td class="rank-cell"><span class="rank-badge rank-5">5</span></td>
+              <td class="team-cell">
+                <img src="static/team-logos/politech.png" alt="PoliTech" class="team-logo">
+                <span class="team-name">PoliTech</span>
+              </td>
+              <td class="score-cell"><span class="score jeopardy">920.0</span></td>
+              <td class="score-cell"><span class="score koth">67463.33</span></td>
+              <td class="score-cell"><span class="score combined">1338.08</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <p class="tagline">Hack the final frontier in Europe’s first CTF played on live satellites.</p>
     </div>
   </header>
 
@@ -157,7 +215,7 @@
           </article>
 
           <!-- Finals card -->
-          <article class="event-card">
+          <article class="tba-event-card">
             <h3>In-Orbit Finals</h3>
             <time datetime="2025-11-04">
               4 – 6 Nov 2025
@@ -176,12 +234,12 @@
           The finals are where the real fun begins - solve tasks on real satellites orbiting Earth.
         </p>
 
-        <p class="tagline" style="margin-bottom:0rem;">
+        <!-- <p class="tagline" style="margin-bottom:0rem;">
             Read the <a href="/rules/index.html">rules</a> before the mission begins.
         </p>
         <p class="tagline" style="margin-bottom: 0rem; margin-top: 1rem;">
             Join the <a href="https://discord.gg/pkcCP34GPE">Discord</a> for updates and discussions.
-        </p>
+        </p> -->
       </div>
     </section>
 
@@ -210,16 +268,15 @@
     <!-- CTA -->
     <section id="cta">
       <div style="text-align:center;">
-        <h2>To Orbit</h2>
-        <p>The qualifier round has concluded.<br>Stay tuned for more information about the finals!</p>
+        <h2>Signing Off</h2>
+        <p>Ctrl+Space 2025 has concluded.<br>We hope to see you again on another mission!</p>
       </div>
     </section>
   </main>
 
   <!-- ---------- Footer ---------- -->
   <footer style="background:#151f32;padding:2rem 1rem;font-size:.875rem;color:var(--grey);text-align:center;">
-    <p>Stay tuned for more information coming soon! 🛰️</p>
+    <p>The event has concluded. All satellites are safe. 🛰️</p>
   </footer>
-  <script src="static/js/countdown.js.v2025-09-22-1.js"></script>
 </body>
 </html>
