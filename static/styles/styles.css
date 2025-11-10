@@ -43,7 +43,6 @@ footer,footer a,p.tagline{color:var(--grey)}a,footer a{transition:color .3s}.par
 
 .scoreboard td {
   padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   vertical-align: middle;
   height: 100%;
 }
@@ -55,10 +54,6 @@ footer,footer a,p.tagline{color:var(--grey)}a,footer a{transition:color .3s}.par
 
 .scoreboard tbody tr:hover {
   background: rgba(255, 255, 255, 0.05);
-}
-
-.scoreboard tbody tr:last-child td {
-  border-bottom: none;
 }
 
 .rank-col {
