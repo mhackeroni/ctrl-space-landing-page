@@ -70,6 +70,26 @@
   .scoreboard td{padding:1rem;vertical-align:middle;}
   .team-cell{display:flex;align-items:center;gap:.75rem;min-height:3rem;}
   .team-logo{width:2rem;height:2rem;object-fit:contain;flex-shrink:0;display:block;}
+  .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;font-weight:700;font-size:.9rem;font-family:"Orbitron",sans-serif;}
+  .rank-1{background:#d4af37;color:#000;}
+  .rank-2{background:#c0c0c0;color:#000;}
+  .rank-3{background:#cd7f32;color:#000;}
+  .rank-4,.rank-5{background:rgba(255,255,255,.15);color:var(--light);}
+  .score{display:inline-block;padding:.4rem 1rem;border-radius:20px;font-weight:600;font-family:"Orbitron",sans-serif;font-size:.85rem;white-space:nowrap;}
+  .score.jeopardy{background:rgba(41,100,200,.3);color:#5ba3ff;}
+  .score.koth{background:rgba(147,64,255,.25);color:#c979ff;}
+  .score.combined{background:rgba(34,139,34,.3);color:#6cde6c;}
+  @media (max-width:768px){
+    .scoreboard-container{padding:0 .25rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .scoreboard{min-width:380px;font-size:.55rem;}
+    .scoreboard th{padding:.3rem .2rem;font-size:.45rem;}
+    .scoreboard td{padding:.4rem .2rem;}
+    .team-cell{gap:.25rem;min-height:1.75rem;}
+    .team-logo{width:1rem;height:1rem;}
+    .rank-badge{width:1rem;height:1rem;font-size:.5rem;}
+    .score{padding:.2rem .3rem;font-size:.48rem;}
+    .team-name{font-size:.55rem;}
+  }
 
   /* Reserve space for partner logos to avoid CLS */
   .partner-logo{width:auto;height:12rem;object-fit:contain;aspect-ratio:3/2;filter:grayscale(100%);opacity:.75;transition:all .3s ease;}
